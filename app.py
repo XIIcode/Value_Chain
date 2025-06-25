@@ -58,11 +58,28 @@ st.subheader("📈 Gross Margin & Value Share Visualization")
 col1, col2 = st.columns(2)
 
 with col1:
-    fig_margin = px.bar(df, x="Actor", y="Gross Margin (%)", title="Gross Margin by Actor")
+    color_palette = px.colors.qualitative.Bold
+    fig_margin = px.bar(
+        df,
+        x="Actor",
+        y="Gross Margin (%)",
+        title="Gross Margin by Actor",
+        color="Actor",
+        color_discrete_sequence=color_palette
+    )
+    fig_margin.update_layout(template="plotly_white", title_font_size=16, font=dict(size=12))
     st.plotly_chart(fig_margin, use_container_width=True)
 
 with col2:
-    fig_share = px.bar(df, x="Actor", y="Value Share (%)", title="Value Share by Actor", color="Value Share (%)")
+    fig_share = px.bar(
+        df,
+        x="Actor",
+        y="Value Share (%)",
+        title="Value Share by Actor",
+        color="Actor",
+        color_discrete_sequence=color_palette
+    )
+    fig_share.update_layout(template="plotly_white", title_font_size=16, font=dict(size=12))
     st.plotly_chart(fig_share, use_container_width=True)
 
 # Recommendations
